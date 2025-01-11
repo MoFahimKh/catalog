@@ -41,7 +41,7 @@ export const EthereumPriceChange: React.FC<PriceChangeProps> = ({
     <div>
       <div className={style["price-in-usd"]}>
         {convertedBalance !== null
-          ? `$${convertedBalance.toFixed(2)}`
+          ? `${convertedBalance.toFixed(2)}`
           : "Balance not available."}
         <div className={style["usd"]}>USD</div>
       </div>

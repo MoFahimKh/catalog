@@ -65,7 +65,7 @@ export const chartOptions: ChartOptions = {
       }
 
       const position =this && this._chart.canvas.getBoundingClientRect();
-      const x = position.right + 10;
+      const x = position.right + 20;
       const y = position.bottom - 150;
 
       tooltipEl.style.left = `${x}px`;

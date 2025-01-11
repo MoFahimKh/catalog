@@ -5,6 +5,7 @@ import style from "./style.module.scss";
 import bgImg from "../../assets/volume.svg";
 import fullscreen from "../../assets/icon.svg";
 import compare from "../../assets/icon1.svg";
+import { FIAT_CURRENCY } from "../../utils/constants";
 
 interface LineGraphViewProps {
   tokenName: string | undefined;
@@ -48,8 +49,6 @@ export const LineGraphView: React.FC<LineGraphViewProps> = ({
   const [duration, setDuration] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const fiatCurrency = "usd";
-
   useEffect(() => {
     const activeTabDetails = tabs.find((tab) => tab.id == activeTab);
     const duration = activeTabDetails
@@ -92,7 +91,7 @@ export const LineGraphView: React.FC<LineGraphViewProps> = ({
           setTokenState={setTokenState}
           loading={loading}
           setLoading={setLoading}
-          vsCurrency={fiatCurrency}
+          vsCurrency={FIAT_CURRENCY}
         />
         <img src={bgImg} alt="" />
       </div>

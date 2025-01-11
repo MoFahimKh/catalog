@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { CHAIN_ID } from "./constants";
 
 export const connectWallet = async (setAccount:any, setError:any, setBalance:any) => {
     if (window && window.ethereum && window.ethereum.isMetaMask) {
@@ -7,7 +8,7 @@ export const connectWallet = async (setAccount:any, setError:any, setBalance:any
 
         // Ensure the network is Sepolia
         const network = await provider.getNetwork();
-        if (network.chainId != BigInt(11155111)) {
+        if (network.chainId != BigInt(CHAIN_ID)) {
           setError("Please switch to the Sepolia network in MetaMask.");
           return;
         }
