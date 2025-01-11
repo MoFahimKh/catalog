@@ -131,13 +131,12 @@ export const LineGraph: React.FC<LineGraphProps> = ({
     datasets: [
       {
         label: "",
-        // backgroundColor: "transparent",
         data: prices.map((priceData: any) =>
           priceData.price.toFixed(3).toString()
         ),
-        fill: false,
+        fill: true, // Enable background fill
         vsCurrency,
-        borderColor: (context: any) => {
+        backgroundColor: (context: any) => {
           const chart = context.chart;
           const { ctx, chartArea } = chart;
           if (
@@ -151,16 +150,17 @@ export const LineGraph: React.FC<LineGraphProps> = ({
           }
 
           const gradient = ctx.createLinearGradient(
-            0, // Change this to 0
+            0, // Start at the top
             chartArea.top,
-            0, // Change this to 0
+            0, // Extend to the bottom
             chartArea.bottom
           );
-          gradient.addColorStop(0, "#4B40EE"); // Start color
-          gradient.addColorStop(1, "#4B40EE"); // End color
+          gradient.addColorStop(0, "rgba(75, 64, 238, 0.4)"); // Top fade
+          gradient.addColorStop(1, "rgba(75, 64, 238, 0)"); // Bottom transparent
 
           return gradient;
         },
+        borderColor: "#4B40EE", // Line color
         tension: 0.1,
         pointRadius: 0,
       },
