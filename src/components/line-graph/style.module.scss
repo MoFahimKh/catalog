@@ -9,14 +9,13 @@
   padding-right: 8px;
 }
 .graph-container {
-  // position: absolute;
   width: 100%;
 }
 .graph-tabs {
   display: flex;
-  // color: rgb(111, 113, 119);
   justify-content: space-between;
   align-items: center;
+  padding-right: 100px;
 }
 .graph-tabs-right {
   display: flex;

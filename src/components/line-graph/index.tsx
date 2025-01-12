@@ -98,8 +98,13 @@ export const LineGraphView: React.FC<LineGraphViewProps> = ({
           />
           <img src={bgImg} alt="" />
         </div>{" "}
-        {tooltipValue && (
+        {tooltipValue ? (
           <div className={style["hovered-price"]}>{tooltipValue}</div>
+        ) : (
+          <div
+            style={{ background: "white" }}
+            className={style["hovered-price"]}
+          ></div>
         )}
       </div>
     </div>
