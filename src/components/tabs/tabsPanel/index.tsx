@@ -32,7 +32,6 @@ export const TabsPanel: React.FC<TabsProps> = ({
   const [selectedTab, setSelectedTab] = useState<string | null>(
     activeTabId || tabs[0].id
   );
-  console.log("selectedTab", selectedTab);
   useEffect(() => {
     if (activeTabId) {
       setSelectedTab(activeTabId);

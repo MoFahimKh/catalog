@@ -51,7 +51,6 @@ export const EthereumPriceChange: React.FC<PriceChangeProps> = ({
           color: priceChange && priceChange > 0 ? "#67BF6B" : "#f71d1d",
         }}
       >
-        {priceChange && priceChange > 0 ? "+" : "-"}
         {priceChange !== null
           ? `${
               balanceChange !== null ? `${balanceChange.toFixed(2)}` : "N/A"

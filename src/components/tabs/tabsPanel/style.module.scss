@@ -46,3 +46,9 @@
   color: var(--grey-white, #fff);
 }
 // #4B40EE
+.tab {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
