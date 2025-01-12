@@ -5,11 +5,17 @@
 ## Features
 
 - **Wallet Connection**: Connect your MetaMask wallet using `ethers.js`.
+  
   ![Wallet Connect](/src/assets/connect-wallet.png)
+  
 - **Real-time Balance**: Displays your wallet's ETH balance in USD with live updates.
+  
   ![Real-time Balance](/src/assets/bal.png)
+  
 - **Price Change Tracking**: Shows real-time changes in ETH balance in USD with percentage change in price.
+  
   ![Price Change Tracking](/src/assets/price-change.png)
+  
 - **Line Graph**: Visualize ETH price trends in USD over selected time periods:
   - 1 Day, 3 Days, 1 Week, 1 Month, 6 Month and max.
 
