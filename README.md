@@ -1,50 +1,60 @@
-# React + TypeScript + Vite
+<h1 align="center">Welcome to Catalog ETH Price Tracker 👋</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A React TypeScript application to track the real-time price of Ethereum (ETH) in USD, connect to MetaMask wallet, display ETH balance in USD, and visualize ETH price trends with an interactive line graph.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Wallet Connection**: Connect your MetaMask wallet using `ethers.js`.
+  ![Wallet Connect](/src/assets/connect-wallet.png)
+- **Real-time Balance**: Displays your wallet's ETH balance in USD with live updates.
+  ![Real-time Balance](/src/assets/bal.png)
+- **Price Change Tracking**: Shows real-time changes in ETH price.
+  ![Price Change Tracking](/src/assets/price-change.png)
+- **Line Graph**: Visualize ETH price trends in USD over selected time periods:
+  - 1 Day, 3 Days, 1 Week, 1 Month, 6 Month and max.
 
-## Expanding the ESLint configuration
+![Line Graph](/src/assets/line-graph.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Modern UI**: Built with React and TypeScript for a smooth and responsive user experience.
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+To set up the project locally:
+
+```sh
+npm install or npm install --legacy-peer-deps
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Usage
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+npm run dev
 ```
+
+## Technologies Used
+
+- **React**: For building the UI.
+- **TypeScript**: Ensures type safety and scalability.
+- **ethers.js**: To interact with the Ethereum blockchain and connect to MetaMask.
+- **CoinGecko API**: Fetches real-time and historical ETH price data.
+- **Chart.js**: For rendering the interactive line graph.
+
+## Deployment link
+
+Deployed using netlify.
+
+- [Link](https://catalog-eth-price-feed.netlify.app/)
+
+## Author
+
+👤 **Mohammad Fahim Khan**
+
+- Github: [@MoFahimKh](https://github.com/MoFahimKh)
+
+## Note
+
+Currently for testing purpose network selected is `SepoliaETH`, chainID : 11155111
+
+**
+This README.md provides a comprehensive overview of your project, its features, and usage. Let me know if you'd like further refinements!
+**
