@@ -48,3 +48,20 @@
   align-items: center;
   gap: 5px;
 }
+.hovered-price {
+  background-color: #4b40ee;
+  width: 98px;
+  height: 33px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.line-graph-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}

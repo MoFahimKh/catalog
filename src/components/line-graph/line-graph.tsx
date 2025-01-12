@@ -2,8 +2,8 @@ import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useMemo, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { chartOptions } from "./chart-options";
 import style from "./style.module.scss";
+import { ChartOptions } from "chart.js";
 
 interface LineGraphProps {
   duration: number;
@@ -12,6 +12,7 @@ interface LineGraphProps {
   loading: boolean;
   setLoading: any;
   vsCurrency: string;
+  setTooltipValue: any;
 }
 
 interface PriceData {
@@ -26,6 +27,7 @@ export const LineGraph: React.FC<LineGraphProps> = ({
   loading,
   setLoading,
   vsCurrency,
+  setTooltipValue,
 }) => {
   const [prices, setPrices] = useState<PriceData[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -167,21 +169,75 @@ export const LineGraph: React.FC<LineGraphProps> = ({
     ],
   };
 
+  const chartOptions: ChartOptions = {
+    legend: { display: false },
+    maintainAspectRatio: false,
+    scales: {
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+          },
+          ticks: {
+            display: false,
+            maxTicksLimit: 6,
+            autoSkip: true,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            display: false,
+            drawBorder: true,
+          },
+          ticks: {
+            display: false,
+          },
+        },
+      ],
+    },
+    tooltips: {
+      mode: "index",
+      intersect: false,
+      backgroundColor: "#4B40EE",
+      bodyFontColor: "rgba(255,255,255,0.6)",
+      displayColors: false,
+      callbacks: {
+        label: (tooltipItem: any, data: any) => {
+          const value = tooltipItem.yLabel || "";
+          setTooltipValue(value); // Update state with the tooltip value
+          const label = data.datasets[tooltipItem.datasetIndex].label || "";
+          return ` ${label} ${value} ${data.datasets[
+            tooltipItem.datasetIndex
+          ].vsCurrency.toUpperCase()}`;
+        },
+      },
+    },
+    elements: {
+      line: {
+        borderWidth: 2,
+      },
+    },
+  };
+
   return (
-    <div className={style["line-graph"]}>
-      {loading ? (
-        <div>
-          {error ? (
-            <div>{error}</div>
-          ) : (
-            <div>
-              <div className={style["loadingText"]}>Updating the chart</div>
-            </div>
-          )}
-        </div>
-      ) : (
-        <Line data={chartData} options={chartOptions} />
-      )}
+    <div>
+      <div className={style["line-graph"]}>
+        {loading ? (
+          <div>
+            {error ? (
+              <div>{error}</div>
+            ) : (
+              <div>
+                <div className={style["loadingText"]}>Updating the chart</div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <Line data={chartData} options={chartOptions} />
+        )}
+      </div>
     </div>
   );
 };

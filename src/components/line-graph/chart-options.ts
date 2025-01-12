@@ -1,6 +1,7 @@
 import { ChartOptions } from "chart.js";
 
-export const chartOptions: ChartOptions = {
+
+export const chartOptions:ChartOptions = {
   legend: { display: false },
   maintainAspectRatio: false,
   scales: {
@@ -42,40 +43,6 @@ export const chartOptions: ChartOptions = {
           tooltipItem.datasetIndex
         ].vsCurrency.toUpperCase()}`;
       },
-    },
-    custom: function (tooltipModel) {
-      let tooltipEl = document.getElementById("chart-tooltip");
-
-      if (!tooltipEl) {
-        tooltipEl = document.createElement("div");
-        tooltipEl.id = "chart-tooltip";
-        tooltipEl.style.position = "absolute";
-        tooltipEl.style.backgroundColor = "#4B40EE";
-        tooltipEl.style.color = "white";
-        tooltipEl.style.borderRadius = "5px";
-        tooltipEl.style.padding = "10px";
-        tooltipEl.style.pointerEvents = "none";
-        tooltipEl.style.opacity = "1";
-        document.body.appendChild(tooltipEl);
-      }
-
-      if (tooltipModel.opacity === 0) {
-        tooltipEl.style.opacity = "0";
-        return;
-      }
-
-      const position =this && this._chart.canvas.getBoundingClientRect();
-      const x = position.right + 20;
-      const y = position.bottom - 150;
-
-      tooltipEl.style.left = `${x}px`;
-      tooltipEl.style.top = `${y}px`;
-      tooltipEl.style.opacity = "1";
-
-      if (tooltipModel.body) {
-        const bodyLines = tooltipModel.body.map((b) => b.lines);
-        tooltipEl.innerHTML = bodyLines.join("<br>");
-      }
     },
   },
   elements: {

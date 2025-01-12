@@ -48,6 +48,7 @@ export const LineGraphView: React.FC<LineGraphViewProps> = ({
   const [activeTab, setActiveTab] = useState<any>(tabs[0]);
   const [duration, setDuration] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
+  const [tooltipValue, setTooltipValue] = useState<string | null>(null);
 
   useEffect(() => {
     const activeTabDetails = tabs.find((tab) => tab.id == activeTab);
@@ -84,16 +85,22 @@ export const LineGraphView: React.FC<LineGraphViewProps> = ({
       {!loading && !tokenState?.diff && (
         <div className={style["errorText"]}>Line Graph unavailable</div>
       )}
-      <div style={{ border: "2px solid #E2E4E7", borderTop: "none" }}>
-        <LineGraph
-          duration={duration}
-          tokenName={tokenName}
-          setTokenState={setTokenState}
-          loading={loading}
-          setLoading={setLoading}
-          vsCurrency={FIAT_CURRENCY}
-        />
-        <img src={bgImg} alt="" />
+      <div className={style["line-graph-container"]}>
+        <div style={{ border: "2px solid #E2E4E7", borderTop: "none" }}>
+          <LineGraph
+            duration={duration}
+            tokenName={tokenName}
+            setTokenState={setTokenState}
+            loading={loading}
+            setLoading={setLoading}
+            vsCurrency={FIAT_CURRENCY}
+            setTooltipValue={setTooltipValue}
+          />
+          <img src={bgImg} alt="" />
+        </div>{" "}
+        {tooltipValue && (
+          <div className={style["hovered-price"]}>{tooltipValue}</div>
+        )}
       </div>
     </div>
   );
